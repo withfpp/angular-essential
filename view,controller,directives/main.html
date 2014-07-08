@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html ng-app="app">
+<head>
+   <meta charset="utf-8">
+   <meta http-equiv="X-UA-Compatible" content="IE=edge">
+   <title></title>
+   <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.0-beta.14/angular.min.js"></script>
+   <script type="text/javascript" src="app.js"></script>
+   <link rel="stylesheet" href="">
+   <style type="text/css" media="screen">
+      .orange {
+         color:orange;
+      }
+      .italic {
+         font-style: italic;
+      }
+   </style>
+</head>
+<body>
+
+   
+   <div ng-controller="MainCtrl">
+      <!-- ng-class example -->
+      <h1 ng-class="{orange: classVar, italic: classVar}">Hello there!</h1>
+
+      <hr>
+      <!-- 2. ng-include example    -->
+      <div ng-include="'test.html'">
+      </div>
+
+      <hr>
+      <!-- 3. ng-model -->
+      <input ng-model="mydata.val">
+      <h1>{{mydata.val}}</h1>
+      <div ng-controller="SubCtrl">
+         <input ng-model="mydata.val">
+         <h1>{{mydata.val}}</h1>
+      </div>
+      
+      <hr>
+      <!-- 4. $scope.$watch : this is really powerful~! -->
+      <p>message comes when name's length is over 15 charcters.($watch is watching :)</p>
+      <span ng-show="mydata.toolong">Name is too long...</span>
+      
+      <hr>
+      <!-- 5. another watch and stop watching -->
+      <div>
+         Num: {{ num }}
+      </div>
+      <div>
+         Nums: {{ nums }}
+      </div>
+      <button type="" ng-click="increment()">Increment</button>
+      <button type="" ng-click="breakit()">Break it</button>
+
+
+      <!-- 6. ng-cloak -->
+      <hr>
+      <span ng-cloak>{{ someData }}</span>
+
+   </div>
+
+   <!-- 2. ng-template -->
+   <script type="text/ng-template" id="test.html">
+      <h1>My Template from ng-template</h1>
+   </script>
+
+</body>
+</html>
